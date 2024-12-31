@@ -10,15 +10,16 @@ if username in allowedUsers:
     
     if password == allowedPassword[userId]:
         print("Welcome %s" % username)
-        print("These are the available options:")
+        print("\nThese are the available options:")
+        availableOptions = [1, 2, 3]
         print("1. Withdrawal")
         print("2. Cash Deposit")
         print("3. Complaint")
         
-        selectedOption = int(input("Please select an option: "))
+        selectedOption = int(input("\nPlease select an option: "))
         
         if selectedOption == 1:
-            withdrawalAmount = int(input("How much would you like to withdraw? "))
+            withdrawalAmount = int(input("\nHow much would you like to withdraw? "))
             if withdrawalAmount <= userBalance[userId]:
                 userBalance[userId] -= withdrawalAmount
                 print("Take your cash")
@@ -27,14 +28,17 @@ if username in allowedUsers:
                 print("Insufficient funds")
         
         elif selectedOption == 2:
-            depositAmount = int(input("How much would you like to deposit? "))
+            depositAmount = int(input("\nHow much would you like to deposit? "))
             userBalance[userId] += depositAmount
             print("Your balance is %d" % userBalance[userId])
         
         elif selectedOption == 3:
-            complaint = input("What issue will you like to report? ")
-            print("Thank you for contacting us")
+            complaint = input("\nWhat issue will you like to report? ")
+            print("Thank you for contacting us, we will get back to you shortly")
+            
+        elif selectedOption != availableOptions:
+            print("\nInvalid option selected, please try again")
     else:
-        print("Password incorrect, please try again")
+        print("\nPassword incorrect, please try again")
 else:
-    print("Username not found, please try again")
+    print("\nUsername not found, please try again")
